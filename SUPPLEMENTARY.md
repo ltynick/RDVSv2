@@ -20,7 +20,7 @@ The collected gaze points (of all participants) are processed with a Gaussian fi
 
 ## Further Dataset Discription and Analysis
 
-### Escription of Attributes
+### Description of Attributes
 
 | Att. | Description |
 |------|-------------|
