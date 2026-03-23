@@ -3,14 +3,68 @@
 This document provides additional details about the paper [RDVSv2: A Large-scale Dataset for RGB-D Video Salient Object Detection]().
 
 ## Table of Contents
-- [Dataset Annotation](#Dataset-Annotation)
-- [Further Dataset Analysis](#Further-Dataset-Analysis)
-- [Dataset Training/Testing Splits](#Dataset-Training/Testing-Splits)
-- [Quantitative Results](#Quantitative-Results)
-- [Ablation Study](#Ablation-Study)
+- [Dataset Annotation](#dataset-annotation)
+- [Further Dataset Discription and Analysis](#further-dataset-discription-and-analysis)
+- [Dataset Training/Testing Splits](#dataset-trainingtesting-splits)
+- [Quantitative Results](#quantitative-results)
+- [Ablation Study](#ablation-study)
+---
 
 ## Dataset Annotation
 
-## Further Dataset Analysis
+Following the eye-tracking-based paradigm established in prior work [1–3], we employ a Tobii Eye Tracker 4C to collect gaze data from participants during free-viewing of video stimuli. The experimental setup remains consistent: the eye tracker operates at a sampling rate of 90 Hz, and visual stimuli are presented on a 23.8-inch screen with a resolution of 1920×1080. Participants use a chinrest to minimize head movement, with a viewing distance of approximately 70 cm maintained throughout the sessions.
+
+To enhance the robustness and generalizability of the annotations, we scale up the participant pool: a total of 22 eligible individuals (14 male, 8 female, aging between 22 and 35) take part in the eye-tracking experiment. All participants pass the eye-tracker calibration procedure, possess normal or corrected-to-normal vision, and have no prior exposure to the video materials. During the experiment, only RGB video frames are displayed; depth information is withheld to avoid influencing visual attention, in line with the annotation protocols of established RGB-D SOD datasets [4–6].
+
+The collected gaze points (of all participants) are processed with a Gaussian filter to generate continuous fixation saliency heatmaps, which subsequently guide the annotation of salient object masks. To handle the substantial scale of the dataset efficiently, we introduce a semi-automatic pipeline that diverges from fully manual annotation. First, trained annotators identify the primary salient objects in each frame using the fixation heatmaps as reference. Then, SAM2 is utilized to perform initial video object segmentation on these candidate regions. Finally, annotators meticulously refine the object boundaries produced by SAM2. This hybrid approach significantly improves annotation efficiency while preserving fine-grained accuracy. Since the annotations are grounded in real gaze data, the resulting dataset naturally captures dynamic saliency shifts, the phenomenon that salient objects may change over time, a property consistent with datasets such as DAVSOD [1].
+
+## Further Dataset Discription and Analysis
+
+### Escription of Attributes
+
+| Att. | Description |
+|------|-------------|
+| HO   | *Heterogeneous Object*. Object regions have distinct colors. |
+| OCC  | *Occlusion*. Object becomes partially or fully occluded. |
+| OV   | *Out-of-view*. Object is partially clipped by the image boundaries. |
+| FM   | *Fast-Motion*. The average per-frame object motion, computed as centroids Euclidean distance, is larger than 20 pixels. |
+| MB   | *Motion Blur*. Object has fuzzy boundaries due to fast motion. |
+| DEF  | *Deformation*. Object presents complex non-rigid deformations. |
+| SC   | *Shape Complexity*. Object has complex boundaries such as thin parts and holes. |
+| SV   | *Scale-Variation*. The area ratio among any pair of bounding boxes enclosing the target object is smaller than 0.5. |
+| AC   | *Appearance Change*. Noticeable appearance variation, due to illumination changes and relative camera-object rotation. |
+| BC   | *Background Clutter*. The background and foreground regions around object boundaries have similar colors. |
+| BO   | *Big Object*. Ratio of object and image areas becomes larger than 0.25. |
+| SO   | *Small Object*. Ratio of object and image areas becomes less than 0.01. |
+| IN   | *Indoor Scenes*. Objects are captured in indoor environment. |
+| OUT  | *Outdoor Scenes*. Objects are captured in outdoor environment. |
+| --- | --- |
+| SH   | *Shift*. Attention shifts occur between salient objects. |
+| MO   | *Multiple Objects*. There are multiple salient objects. |
+
+**Table 1:** List of video attributes and the corresponding description. We refer to [7, 3] and extend a part of their attributes (top) with four additional general attributes (bottom) regarding extreme object sizes and environments.
+
+
+## Dataset Training/Testing Splits
+
+## Quantitative Results
 
 ## Ablation Study
+
+---
+
+## References
+
+[1] D.-P. Fan, W. Wang, M.-M. Cheng, and J. Shen, “Shifting more attention to video salient object detection,” in *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)*, 2019, pp. 8554–8564.
+
+[2] W. Wang, J. Shen, J. Xie, M.-M. Cheng, H. Ling, and A. Borji, “Revisiting video saliency prediction in the deep learning era,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 43, no. 1, pp. 220–237, 2019.
+
+[3] A. Mou, Y. Lu, J. He, D. Min, K. Fu, and Q. Zhao, “Salient object detection in RGB-D videos,” *IEEE Transactions on Image Processing*, vol. 33, pp. 6660–6675, 2024.
+
+[4] D.-P. Fan, Z. Lin, Z. Zhang, M. Zhu, and M.-M. Cheng, “Rethinking RGB-D salient object detection: Models, data sets, and large-scale benchmarks,” *IEEE Transactions on Neural Networks and Learning Systems*, vol. 32, no. 5, pp. 2075–2089, 2020.
+
+[5] H. Peng, B. Li, W. Xiong, W. Hu, and R. Ji, “RGBD salient object detection: A benchmark and algorithms,” in *European Conference on Computer Vision (ECCV)*, 2014, pp. 92–109.
+
+[6] N. Liu, N. Zhang, L. Shao, and J. Han, “Learning selective mutual attention and contrast for RGB-D saliency detection,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 44, no. 12, pp. 9026–9042, 2021.
+
+[7] F. Perazzi, J. Pont-Tuset, B. McWilliams, L. Van Gool, M. Gross, and A. Sorkine-Hornung, “A benchmark dataset and evaluation methodology for video object segmentation,” in *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*, 2016, pp. 724–732.
