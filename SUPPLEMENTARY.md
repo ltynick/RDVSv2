@@ -45,7 +45,18 @@ The collected gaze points (of all participants) are processed with a Gaussian fi
 **Table 1:** List of video attributes and the corresponding description. We refer to [7, 3] and extend a part of their attributes (top) with four additional general attributes (bottom) regarding extreme object sizes and environments.
 
 ### Object Size Distribution
+<div align="center">
+  <img src="./figs/combined_statistics_final.png" width="50%">
+  <p style="text-align: center;"><b>Fig. 1</b></p>
+</div>
+Fig. 1 Illustrates the distributions of the normalized salient object size which is defined as the ratio of the salient object's pixel area to the total frame area. It can be observed that while the object size ratios in other RGB-D VSOD datasets are heavily concentrated below 0.3, the proportion of extremely small objects in RDVSv2 is relatively lower. Notably, a secondary peak emerges around the ratio of 0.5 in RDVSv2's distribution. This indicates that salient objects in our dataset are, on average, larger in scale. This shift in distribution diversifies the training data and effectively addresses the previous under-representation of medium-to-large salient objects in the field.
 
+### Frame Count Comparison
+<div align="center">
+    <img src="./figs/frame_count_comparison.png" width="50%" />
+    <p style="text-align: center;"><b>Fig. 2</b></p>
+</div> 
+We have also compiled statistics on the distribution of video sequence lengths and the ratios of salient object sizes in RDVSv2 alongside other RGB-D VSOD datasets. Fig. 2 presents the distribution of sequence lengths. DViSal is excluded from this comparison due to the lack of per-frame annotations and the generally excessive length of its sequences. The results show that RDVSv2 exhibits a significantly broader range of frame counts. Specifically, the RDVS dataset features a high proportion of sequences with fewer than 100 frames, while sequences in the ViDSOD dataset are primarily clustered around a length of 100 frames. In comparison, RDVSv2 contains a considerably higher proportion of longer videos. This characteristic provides richer and more varied training samples, making it particularly suitable for developing models that require long-term temporal modeling.
 
 ## Dataset Training/Testing Splits
 
