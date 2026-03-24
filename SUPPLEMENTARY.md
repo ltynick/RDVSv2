@@ -44,6 +44,8 @@ The collected gaze points (of all participants) are processed with a Gaussian fi
 
 **Table 1:** List of video attributes and the corresponding description. We refer to [7, 3] and extend a part of their attributes (top) with four additional general attributes (bottom) regarding extreme object sizes and environments.
 
+### Object Size Distribution
+
 
 ## Dataset Training/Testing Splits
 
