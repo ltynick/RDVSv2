@@ -4,6 +4,7 @@ This README is about reproducing the paper [RDVSv2: A Large-scale Dataset for RG
 
 ## Table of Contents
 - [Downloads](#downloads)
+- [Supplementary Material](#supplementary-material)
 ---
 
 ## Downloads
@@ -11,3 +12,6 @@ This README is about reproducing the paper [RDVSv2: A Large-scale Dataset for RG
 Full datasets (RGB video URLs, depth maps, optical flow maps, ground truth and the data split tool): [Google Drive]: | [Baidu Pan]:
 
 Use the data split tool to download the videos and split the videos into frames.
+
+## Supplementary Material
+Supplementary material is available in [`SUPPLEMENTARY.md`](SUPPLEMENTARY.md).
