@@ -56,9 +56,20 @@ Fig. 1 Illustrates the distributions of the normalized salient object size which
     <img src="./figs/frame_count_comparison.png" width="50%" />
     <p style="text-align: center;"><b>Fig. 2</b></p>
 </div> 
-We have also compiled statistics on the distribution of video sequence lengths and the ratios of salient object sizes in RDVSv2 alongside other RGB-D VSOD datasets. Fig. 2 presents the distribution of sequence lengths. DViSal is excluded from this comparison due to the lack of per-frame annotations and the generally excessive length of its sequences. The results show that RDVSv2 exhibits a significantly broader range of frame counts. Specifically, the RDVS dataset features a high proportion of sequences with fewer than 100 frames, while sequences in the ViDSOD dataset are primarily clustered around a length of 100 frames. In comparison, RDVSv2 contains a considerably higher proportion of longer videos. This characteristic provides richer and more varied training samples, making it particularly suitable for developing models that require long-term temporal modeling.
+We have also compiled statistics on the distribution of video sequence lengths and the ratios of salient object sizes in RDVSv2 alongside other RGB-D VSOD datasets. Fig. 2 presents the distribution of sequence lengths. DViSal [8] is excluded from this comparison due to the lack of per-frame annotations and the generally excessive length of its sequences. The results show that RDVSv2 exhibits a significantly broader range of frame counts. Specifically, the RDVS dataset features a high proportion of sequences with fewer than 100 frames, while sequences in the ViDSOD-100 [9] dataset are primarily clustered around a length of 100 frames. In comparison, RDVSv2 contains a considerably higher proportion of longer videos. This characteristic provides richer and more varied training samples, making it particularly suitable for developing models that require long-term temporal modeling.
 
 ## Dataset Training/Testing Splits
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <div align="center">
+    <img src="./figs/data_split_1.png" width="50%" />
+    <p style="text-align: center;"><b>Fig. 3</b></p>
+  </div>
+  <div align="center">
+    <img src="./figs/data_split_2.png" width="50%" />
+    <p style="text-align: center;"><b>Fig. 4</b></p>
+  </div>
+</div>
+As shown in Fig. 3 and Fig. 4, The quantities of object categories and attributes are partitioned into training and test sets following an approximate 7:3 ratio.
 
 ## Quantitative Results
 
@@ -81,3 +92,7 @@ We have also compiled statistics on the distribution of video sequence lengths a
 [6] N. Liu, N. Zhang, L. Shao, and J. Han, “Learning selective mutual attention and contrast for RGB-D saliency detection,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 44, no. 12, pp. 9026–9042, 2021.
 
 [7] F. Perazzi, J. Pont-Tuset, B. McWilliams, L. Van Gool, M. Gross, and A. Sorkine-Hornung, “A benchmark dataset and evaluation methodology for video object segmentation,” in *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*, 2016, pp. 724–732.
+
+[8] J. Li, W. Ji, S. Wang, W. Li, et al., “DVSOD: RGB-D video salient object detection,” in Advances in Neural Information Processing Systems (NeurIPS), vol. 36, pp. 8774–8787, 2023.
+
+[9] J. Lin, L. Zhu, J. Shen, H. Fu, Q. Zhang, and L. Wang, “VidSOD-100: A new dataset and a baseline model for RGB-D video salient object detection,” International Journal of Computer Vision, vol. 132, no. 11, pp. 5173–5191, 2024.
