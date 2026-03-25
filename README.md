@@ -14,4 +14,4 @@ Full datasets (RGB video URLs, depth maps, optical flow maps, ground truth and t
 Use the data split tool to download the videos and split the videos into frames.
 
 ## Supplementary Material
-Supplementary material for review is available in [`SUPPLEMENTARY.md`](SUPPLEMENTARY.md).
+Supplementary material for ACM Multimedia 2026 Dataset Track review is available in [`SUPPLEMENTARY.md`](SUPPLEMENTARY.md).
