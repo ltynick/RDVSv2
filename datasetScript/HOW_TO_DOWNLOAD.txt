@@ -1,0 +1,91 @@
+How to download videos with yt-dlp (English guide)
+==================================================
+
+This guide mirrors howtodownload.txt: use yt-dlp to fetch YouTube (and other) videos for this project.
+Videos downloaded via the “video-only” method have NO audio.
+
+------------------------------------------------------------
+Why yt-dlp (not youtube-dl)
+------------------------------------------------------------
+
+  youtube-dl is largely broken for YouTube due to site changes. Use yt-dlp instead:
+  https://github.com/yt-dlp/yt-dlp
+
+------------------------------------------------------------
+Method A – Anaconda / PyCharm terminal (video only, no sound)
+------------------------------------------------------------
+
+  1) Install / upgrade yt-dlp (pip, from GitHub master):
+
+       pip install --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
+
+  2) Put one video ID per line in a list file (e.g. rdvs_list.txt).
+
+  3) Download best WebM video (recommended for stereo / left–right layout in this dataset workflow):
+
+       yt-dlp --download-archive downloaded.txt -f "bestvideo[ext=webm]" -a rdvs_list.txt -o "rdvs/%(id)s.%(ext)s"
+
+     Important:
+       - Use double quotes around the format string on Windows.
+       - For this project’s side-by-side stereo frames, WebM is required; plain MP4 often does not preserve the layout you need.
+
+  4) Output files go under rdvs/ as <id>.webm (see -o pattern).
+
+------------------------------------------------------------
+Method B – Windows CMD (video + audio, needs ffmpeg on PATH)
+------------------------------------------------------------
+
+  1) Install ffmpeg (official builds or a guide you trust).
+
+  2) Install yt-dlp:
+       https://github.com/yt-dlp/yt-dlp/releases
+     You can place yt-dlp.exe inside ffmpeg’s bin folder so you only need one directory on PATH.
+
+  3) Open CMD, cd to the folder where you keep your list file, then run:
+
+       yt-dlp --download-archive downloaded.txt -f "bestvideo+bestaudio[ext=webm]" -a wsvd_list.txt -o "wsvd/%(id)s.%(ext)s"
+
+     Replace wsvd_list.txt / wsvd/ with your own list file and output folder if different.
+
+------------------------------------------------------------
+If downloads fail (YouTube / bot checks)
+------------------------------------------------------------
+
+  Try a longer command with a JS runtime, browser cookies, and alternate player clients.
+  Below is for Windows CMD (line continuation with ^). Adjust paths to your Node and browser.
+
+       yt-dlp ^
+         --js-runtimes "node:C:\Program Files\nodejs\node.exe" ^
+         --cookies-from-browser firefox ^
+         --extractor-args "youtube:player_client=default,web_embedded" ^
+         --download-archive downloaded.txt ^
+         -f "bestvideo[ext=webm]" ^
+         -a rdvs_list.txt ^
+         -o "rdvs/%(id)s.%(ext)s"
+
+  Notes:
+       - Install Node.js if you use --js-runtimes node:...
+       - Replace firefox with chrome / edge if you use that browser while logged into YouTube.
+       - In PowerShell, use backtick ` at line ends instead of ^.
+
+------------------------------------------------------------
+Fallback: MP4 if WebM is unavailable
+------------------------------------------------------------
+
+  Example (video + audio, MP4):
+
+       yt-dlp --download-archive downloaded.txt -f "bestvideo+bestaudio[ext=mp4]" -a wsvd_list.txt -o "wsvd/%(id)s.%(ext)s"
+
+  MP4 may not match the stereo WebM behavior noted above; use WebM when possible for this dataset pipeline.
+
+------------------------------------------------------------
+--download-archive
+------------------------------------------------------------
+
+  The file (e.g. downloaded.txt) records completed downloads so yt-dlp skips them on the next run. Use a dedicated archive file per project or folder if you want separate tracking.
+
+------------------------------------------------------------
+After downloading
+------------------------------------------------------------
+
+  See USAGE.txt for extracting frames (videoToImage.py) and cropping the left half (cutImage.py, segment.py).

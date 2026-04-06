@@ -1,0 +1,24 @@
+在Anaconda（pycharm）的terminal里完成，下载的视频是没有声音的。
+install yt-dlp: pip install --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
+download videos: yt-dlp --download-archive downloaded.txt -f "bestvideo[ext=webm]" -a rdvs_list.txt -o rdvs/%(id)s.%(ext)s
+ps: 必须使用双引号，ext格式选webm才有左右视差，mp4不可行
+pps：youtube-dl已经不可用了，因为youtube程序的修改，使用yt-dlp代替
+
+在cmd里运行，可以下载带声音的视频（需要配置环境）
+下载ffmpeg：https://blog.csdn.net/csdn_yudong/article/details/129182648
+下载yt-dlp：https://github.com/yt-dlp/yt-dlp/releases
+下载yt-dlp.exe直接存放在ffmpeg的bin文件夹里就不需要多配一个环境了。
+然后打开cmd，cd到下视频的文件夹中，运行：
+yt-dlp --download-archive downloaded.txt -f "bestvideo+bestaudio[ext=webm]" -a wsvd_list.txt -o wsvd/%(id)s.%(ext)s
+无法下载的话尝试：
+yt-dlp ^
+  --js-runtimes "node:C:\Program Files\nodejs\node.exe" ^
+  --cookies-from-browser firefox ^
+  --extractor-args "youtube:player_client=default,web_embedded" ^
+  --download-archive downloaded.txt ^
+  -f "bestvideo[ext=webm]" ^
+  -a rdvs_list.txt ^
+  -o "rdvs/%(id)s.%(ext)s"
+  
+如果缺失webm文件，下载MP4文件
+yt-dlp --download-archive downloaded.txt -f "bestvideo+bestaudio[ext=mp4]" -a wsvd_list.txt -o wsvd/%(id)s.%(ext)s

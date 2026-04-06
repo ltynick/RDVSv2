@@ -1,0 +1,108 @@
+DatasetScript – Video Frame Extraction and Left-Half Cropping
+================================================================
+
+Chinese version: USAGE_ZH.txt
+
+------------------------------------------------------------
+Downloading videos
+------------------------------------------------------------
+
+  See HOW_TO_DOWNLOAD.txt. Chinese notes: howtodownload.txt.
+
+
+This repository contains small Python scripts to:
+  1) Decode videos into sequential PNG frames.
+  2) Optionally crop letterboxing / framing (adjust as needed).
+  3) Split a side-by-side (stereo-style) frame into left and right halves; keep the LEFT half for your dataset.
+
+Stereo depth estimation (e.g. RAFT) is OUT OF SCOPE here. Scripts like main.py, resizeFrame.py, and normalization.py.
+
+------------------------------------------------------------
+Requirements
+------------------------------------------------------------
+
+  Python 3.x
+  pip install opencv-python pillow
+
+  Optional (only if you use cutVideoByFrame.py to trim a clip first):
+  pip install moviepy
+
+------------------------------------------------------------
+Folder layout (default)
+------------------------------------------------------------
+
+  rdvs/              Put your video files here, named as <VIDEO_ID>.mp4, or .webm
+  download.txt       One video ID per line (same string as the file name without extension)
+  image/<VIDEO_ID>/  Frames are written here after step 1
+
+  cutImage/          Copy (or symlink) frames here before step 2, OR change paths in cutImage.py
+  left-right/        Output of step 2 (cropped full frame)
+  left/              Output of step 3 – LEFT half of each image (what you usually want)
+  right/             Output of step 3 – right half (optional; delete if unused)
+
+------------------------------------------------------------
+Step 1 – Video to frames (videoToImage.py)
+------------------------------------------------------------
+
+  A) Edit the USER CONFIG block at the bottom of videoToImage.py:
+       - LIST_FILE  : text file listing video IDs (default: download.txt)
+       - RDVS_DIR   : folder containing the video files
+       - OUT_BASE   : root folder for extracted frames (default: image)
+
+  B) Put one ID per line in LIST_FILE, for example:
+       4eEGyOxhh40
+       P-sELw668BU
+
+  C) Place matching files in RDVS_DIR, e.g. rdvs/4eEGyOxhh40.mp4 or rdvs/P-sELw668BU.webm
+
+  D) Run:
+       python videoToImage.py
+
+  Frames are saved as OUT_BASE/<VIDEO_ID>/0001.png, 0002.png, ...
+
+  Note: decode_video() uses the video FPS in waitKey(); long videos may run slowly. You may change that line locally if you prefer maximum speed (not the default in this repo).
+
+------------------------------------------------------------
+Step 2 – Crop full frames (cutImage.py)
+------------------------------------------------------------
+
+  Use this if your frames have black bars or you need a crop before splitting left/right.
+
+  A) Edit the USER CONFIG block in cutImage.py:
+       - PATH_IMG   : input folder (e.g. copy image/<VIDEO_ID>/* into ./cutImage/)
+       - PATH_OUT   : output folder (default ./left-right/)
+       - reduction_h / crop box: tune if your aspect ratio or borders differ
+
+  B) Run:
+       python cutImage.py
+
+------------------------------------------------------------
+Step 3 – Left (and right) half (segment.py)
+------------------------------------------------------------
+
+  Expects side-by-side images under INPUT_DIR (default ./left-right).
+
+  A) Edit the USER CONFIG block in segment.py:
+       - PATH_IMG   : usually ./left-right
+       - PATH_LEFT  : where to save the left half (default ./left)
+       - PATH_RIGHT : where to save the right half (default ./right)
+
+  B) Run:
+       python segment.py
+
+  Your “left view” RGB crops are in PATH_LEFT.
+
+------------------------------------------------------------
+Optional – Trim a video clip first (cutVideoByFrame.py)
+------------------------------------------------------------
+
+  Requires moviepy. Edit VIDEO_PATH, frame indices or time range, and OUTPUT_NAME inside the script, then run:
+       python cutVideoByFrame.py
+
+------------------------------------------------------------
+Scripts you can ignore for RGB-only workflow
+------------------------------------------------------------
+
+  main.py           – demo blending RGB/depth (local paths hard-coded)
+  resizeFrame.py    – batch resize for external depth tools
+  normalization.py  – depth map normalization
