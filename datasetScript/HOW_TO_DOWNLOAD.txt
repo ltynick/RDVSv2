@@ -1,7 +1,7 @@
 How to download videos with yt-dlp (English guide)
 ==================================================
 
-This guide mirrors howtodownload.txt: use yt-dlp to fetch YouTube (and other) videos for this project.
+This guide mirrors howtodownload.txt: use yt-dlp to fetch YouTube videos for this project.
 Videos downloaded via the “video-only” method have NO audio.
 
 ------------------------------------------------------------
