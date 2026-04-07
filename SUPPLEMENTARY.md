@@ -1,6 +1,6 @@
 # Supplementary Material for RDVSv2: A Large-scale Benchmark for RGB-D Video Salient Object Detection
 
-This document provides additional details about the paper [RDVSv2: A Large-scale Dataset for RGB-D Video Salient Object Detection]().
+This document provides additional details about the paper [RDVSv2: A Large-scale Benchmark for RGB-D Video Salient Object Detection]().
 
 ## Table of Contents
 - [Dataset Annotation](#dataset-annotation)
