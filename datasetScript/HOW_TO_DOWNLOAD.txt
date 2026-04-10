@@ -19,7 +19,7 @@ Method A – Anaconda / PyCharm terminal (video only, no sound)
 
        pip install --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
 
-  2) Put one video ID per line in a list file (e.g. rdvs_list.txt).
+  2) Put one video ID per line in a list file (e.g. rdvs_list.txt). All the URLs can be found in URLs.txt after downloading the full dataset.
 
   3) Download best WebM video (recommended for stereo / left–right layout in this dataset workflow):
 
