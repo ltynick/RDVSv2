@@ -4,7 +4,7 @@ Last updated: July 27, 2026
 
 ## 1. Copyright
 
-Copyright © 2026 Tianyu Li, Jiaohao He, Keren Fu, and Qijun Zhao.
+Copyright © 2026 Tianyu Li, Jiahao He, Keren Fu, and Qijun Zhao.
 
 This document describes the licensing terms applicable to the RDVSv2
 dataset components and clarifies the treatment of third-party source
@@ -31,41 +31,56 @@ database rights and owned or controlled by the RDVSv2 authors.
 ## 3. Creative Commons License
 
 The Licensed Materials are made available under the Creative Commons
-Attribution 4.0 International License (CC BY 4.0).
+Attribution-NonCommercial 4.0 International License
+(CC BY-NC 4.0).
 
 Human-readable license summary:
 
-https://creativecommons.org/licenses/by/4.0/
+https://creativecommons.org/licenses/by-nc/4.0/
 
 Full legal code:
 
-https://creativecommons.org/licenses/by/4.0/legalcode
+https://creativecommons.org/licenses/by-nc/4.0/legalcode
 
-Under CC BY 4.0, users may share and adapt the Licensed Materials for
-any purpose, including commercial purposes, provided that they comply
-with the attribution and other requirements of the license.
+Under CC BY-NC 4.0, users may share and adapt the Licensed Materials
+for non-commercial purposes only, provided that they comply with the
+attribution and other requirements of the license.
 
-If any provision in this notice conflicts with the CC BY 4.0 legal
-code, the CC BY 4.0 legal code controls with respect to the Licensed
-Materials.
+“NonCommercial” means use that is not primarily intended for or
+directed toward commercial advantage or monetary compensation, as
+defined by CC BY-NC 4.0.
+
+Commercial use of the Licensed Materials is not permitted under this
+license. Parties wishing to use the Licensed Materials for commercial
+purposes must obtain separate prior written permission from the
+RDVSv2 rights holders.
+
+For commercial licensing inquiries, contact:
+
+Keren Fu  
+Email: fkrsuper@scu.edu.cn
+
+If any provision in this notice conflicts with the CC BY-NC 4.0 legal
+code, the CC BY-NC 4.0 legal code controls with respect to the
+Licensed Materials.
 
 ## 4. Attribution
 
 Users of the Licensed Materials must provide appropriate attribution
-in accordance with CC BY 4.0.
+in accordance with CC BY-NC 4.0.
 
 A reasonable attribution should include:
 
 - the name “RDVSv2”;
 - credit to the RDVSv2 authors;
 - a link to the RDVSv2 repository;
-- a link to the CC BY 4.0 license; and
+- a link to the CC BY-NC 4.0 license; and
 - an indication of whether modifications were made.
 
 Recommended attribution:
 
 > RDVSv2 Dataset, created by Tianyu Li, Jiaohao He, Keren Fu, and
-> Qijun Zhao, licensed under CC BY 4.0.
+> Qijun Zhao, licensed under CC BY-NC 4.0.  
 > https://github.com/ltynick/RDVSv2
 
 For academic publications, users are requested to cite:
@@ -78,4 +93,10 @@ For academic publications, users are requested to cite:
              Zhao, Qijun},
   journal = {arXiv preprint},
   year    = {2026},
+  url     = {https://github.com/ltynick/RDVSv2}
 }
+```
+
+Academic citation is requested as the customary form of attribution.
+It does not replace any attribution requirements imposed by
+CC BY-NC 4.0.
