@@ -93,7 +93,6 @@ For academic publications, users are requested to cite:
              Zhao, Qijun},
   journal = {arXiv preprint},
   year    = {2026},
-  url     = {https://github.com/ltynick/RDVSv2}
 }
 ```
 
