@@ -112,7 +112,7 @@ The quantitative results on the three RGB-D VSOD datasets are shown in [Fig. 6](
 
 <a id="fig8"></a>
 <div align="center">
-  <img src="./figs/ab.png" width="50%">
+  <img src="./figs/ab.png" width="40%">
   <p style="text-align: center;"><b>Table 3: Ablation study on RDVSv2</b></p>
 </div>
 
